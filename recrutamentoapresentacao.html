@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economiza 360 RH — Apresentação Executiva 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     RESET & BASE
+     ============================================ */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background: #0A0A0A;
+    color: #FFFFFF;
+  }
+
+  :root {
+    --bg: #141414;
+    --bg-card: #1E1E1E;
+    --border: #333333;
+    --orange: #FF6B00;
+    --white: #FFFFFF;
+    --gray: #999999;
+    --gray-text: #AAAAAA;
+    --gray-dark: #666666;
+    --red: #FF0000;
+    --green: #1E6B3A;
+    --green-light: #2D8B4E;
+  }
+
+  /* ============================================
+     APRESENTAÇÃO — CONTAINER
+     ============================================ */
+  .presentation {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ============================================
+     SLIDE — TELA CHEIA
+     ============================================ */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--bg);
+    display: none;
+    flex-direction: column;
+  }
+
+  .slide.active {
+    display: flex;
+  }
+
+  /* ============================================
+     HEADER
+     ============================================ */
+  .header {
+    height: 56px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(20,20,20,0.95);
+    flex-shrink: 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--orange);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .logo-text span {
+    color: var(--orange);
+  }
+
+  .header-center {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+  }
+
+  .header-num {
+    font-size: 13px;
+    color: var(--gray-dark);
+  }
+
+  /* ============================================
+     CONTEÚDO DO SLIDE
+     ============================================ */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 64px;
+    overflow: hidden;
+  }
+
+  .content.center {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ============================================
+     TAGLINE
+     ============================================ */
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .tag::before {
+    content: '';
+    width: 28px;
+    height: 3px;
+    background: var(--orange);
+  }
+
+  .tag span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .tag.c {
+    justify-content: center;
+  }
+
+  /* ============================================
+     HEADLINE
+     ============================================ */
+  h1 {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    max-width: 900px;
+  }
+
+  h1 em {
+    color: var(--orange);
+    font-style: italic;
+  }
+
+  h1 .hl {
+    color: var(--orange);
+    font-style: normal;
+  }
+
+  /* ============================================
+     SUBTÍTULO
+     ============================================ */
+  .sub {
+    font-size: clamp(13px, 1.2vw, 16px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--gray-text);
+    max-width: 660px;
+    margin-bottom: 24px;
+  }
+
+  .sub strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .sub.c {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ============================================
+     MÉTRICAS EM LINHA
+     ============================================ */
+  .metrics {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .metrics.c {
+    justify-content: center;
+  }
+
+  .m {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .m-n {
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .m-l {
+    font-size: 11px;
+    color: var(--gray);
+    max-width: 140px;
+  }
+
+  .m-l.c {
+    text-align: center;
+  }
+
+  .m-div {
+    width: 1px;
+    height: 50px;
+    background: var(--border);
+    align-self: center;
+  }
+
+  /* ============================================
+     BADGES
+     ============================================ */
+  .badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .badges.c {
+    justify-content: center;
+  }
+
+  .b {
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* ============================================
+     NAVEGAÇÃO (SETAS)
+     ============================================ */
+  .nav {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+  }
+
+  .nav button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: rgba(30,30,30,0.9);
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .nav button:hover {
+    border-color: var(--orange);
+    background: rgba(255,107,0,0.1);
+  }
+
+  /* ============================================
+     BARRA DE DESTAQUE
+     ============================================ */
+  .bar {
+    padding: 14px 24px;
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    background: rgba(255,107,0,0.04);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .bar-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .bar-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .bar-text .o {
+    color: var(--orange);
+  }
+
+  /* ============================================
+     TIMELINE (SLIDE 03)
+     ============================================ */
+  .timeline {
+    width: 100%;
+    margin: 20px 0 16px 0;
+    position: relative;
+  }
+
+  .tl-line {
+    width: 100%;
+    height: 3px;
+    background: var(--orange);
+  }
+
+  .tl-items {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -8px;
+  }
+
+  .tl-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .tl-dot {
+    width: 14px;
+    height: 14px;
+    background: var(--orange);
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    margin-bottom: 8px;
+  }
+
+  .tl-item:last-child .tl-dot {
+    width: 18px;
+    height: 18px;
+    box-shadow: 0 0 0 4px rgba(255,107,0,0.3);
+  }
+
+  .tl-year {
+    font-size: clamp(12px, 1.2vw, 16px);
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  .tl-title {
+    font-size: clamp(10px, 0.9vw, 12px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1px;
+  }
+
+  .tl-desc {
+    font-size: clamp(9px, 0.8vw, 11px);
+    color: var(--gray);
+    max-width: 90px;
+  }
+</style>
+</head>
+<body>
+
+<div class="presentation" id="presentation">
+
+  <!-- ==========================================
+       SLIDE 01 / 15 — CAPA
+       ========================================== -->
+  <div class="slide active" data-slide="1">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">01 / 15</div>
+    </div>
+
+    <div class="content center">
+      <div class="tag c">
+        <span>APRESENTAÇÃO EXECUTIVA — RH 2026</span>
+      </div>
+
+      <h1 style="text-align:center;max-width:900px;">
+        Uma contratação errada custa caro.<br>
+        Mas <em>quanto custa para sua empresa?</em>
+      </h1>
+
+      <p class="sub c">
+        Processos seletivos estratégicos para contratar com mais segurança, agilidade e assertividade.
+      </p>
+
+      <div class="metrics c">
+        <div class="m">
+          <div class="m-n">+10 anos</div>
+          <div class="m-l c">Conectando empresas aos profissionais certos</div>
+        </div>
+        <div class="m-div"></div>
+        <div class="m">
+          <div class="m-n">+7 mil</div>
+          <div class="m-l c">Processos seletivos conduzidos</div>
+        </div>
+        <div class="m-div"></div>
+        <div class="m">
+          <div class="m-n">+1 milhão</div>
+          <div class="m-l c">Candidatos avaliados</div>
+        </div>
+      </div>
+
+      <div class="badges c">
+        <div class="b">Sangati Berga</div>
+        <div class="b">Pague Menos Construções</div>
+        <div class="b">Construtora Porto Freire</div>
+        <div class="b">Jangadeiro Têxtil</div>
+        <div class="b">Transnordestina Logística</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 02 / 15 — QUEM SOMOS
+       ========================================== -->
+  <div class="slide" data-slide="2">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">02 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>QUEM SOMOS</span>
+      </div>
+
+      <h1>
+        A maior operação de <em>recrutamento e seleção</em> do Nordeste.
+      </h1>
+
+      <p class="sub">
+        Atuamos na atração, triagem e seleção de profissionais para operações de todos os portes. Com milhares de processos realizados e uma base robusta de candidatos, entregamos velocidade, qualidade e segurança nas contratações.
+      </p>
+
+      <div class="metrics">
+        <div class="m">
+          <div class="m-n">+10</div>
+          <div class="m-l">Anos de operação</div>
+        </div>
+        <div class="m">
+          <div class="m-n">+7.000</div>
+          <div class="m-l">Processos seletivos</div>
+        </div>
+        <div class="m">
+          <div class="m-n">+1MI</div>
+          <div class="m-l">Candidatos avaliados</div>
+        </div>
+        <div class="m">
+          <div class="m-n">+500</div>
+          <div class="m-l">Empresas atendidas</div>
+        </div>
+        <div class="m">
+          <div class="m-n">92%</div>
+          <div class="m-l">Taxa de aderência</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 03 / 15 — NOSSA TRAJETÓRIA
+       ========================================== -->
+  <div class="slide" data-slide="3">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">03 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>NOSSA TRAJETÓRIA</span>
+      </div>
+
+      <h1>
+        Uma história construída <em>com resultado.</em>
+      </h1>
+
+      <div class="timeline">
+        <div class="tl-line"></div>
+        <div class="tl-items">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2016</div>
+            <div class="tl-title">Início</div>
+            <div class="tl-desc">Setor de otimização</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2018</div>
+            <div class="tl-title">Atuação</div>
+            <div class="tl-desc">Gestão de custos</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2019</div>
+            <div class="tl-title">Consultores</div>
+            <div class="tl-desc">Independentes</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2020</div>
+            <div class="tl-title">Junção</div>
+            <div class="tl-desc">Sócios se unem</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2021</div>
+            <div class="tl-title">Criação</div>
+            <div class="tl-desc">FSO em SP</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2022</div>
+            <div class="tl-title">Expansão</div>
+            <div class="tl-desc">SP — CE</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2023</div>
+            <div class="tl-title">Reforço</div>
+            <div class="tl-desc">3º sócio entra</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2024</div>
+            <div class="tl-title">Pivotagem</div>
+            <div class="tl-desc">Nasce EZ360</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2025</div>
+            <div class="tl-title">Resultado</div>
+            <div class="tl-desc">+R$12M +100 clientes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bar">
+        <div class="bar-icon">🌎</div>
+        <div class="bar-text">A PESSOA CERTA <span class="o">FAZ TODA A DIFERENÇA.</span></div>
+      </div>
+    </div>
+  </div>
+ <!-- ==========================================
+       SLIDE 04 / 15 — MISSÃO, VISÃO & PROPÓSITO
+       ========================================== -->
+  <div class="slide" data-slide="4">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">04 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>MISSÃO, VISÃO & PROPÓSITO</span>
+      </div>
+
+      <h1>Nenhuma empresa cresce <em>sozinha.</em></h1>
+
+      <div class="cards-3">
+        <div class="card-mvp">
+          <div class="card-ico">🎯</div>
+          <h3 class="card-t">Nossa Missão</h3>
+          <p class="card-p">Conectar as pessoas certas às empresas certas — gerando mais de 1 milhão de oportunidades de emprego e contribuindo para o desenvolvimento do Brasil.</p>
+        </div>
+        <div class="card-mvp">
+          <div class="card-ico">🔭</div>
+          <h3 class="card-t">Nossa Visão</h3>
+          <p class="card-p">Ser a referência nacional em eficiência operacional e recrutamento acelerado, com modelo baseado em resultado — não em promessas.</p>
+        </div>
+        <div class="card-mvp">
+          <div class="card-ico">💡</div>
+          <h3 class="card-t">Nosso Propósito</h3>
+          <p class="card-p">Empresas movem o Brasil. Conectamos as pessoas certas às empresas certas — com a meta de gerar mais de 1 milhão de empregos.</p>
+        </div>
+      </div>
+
+      <div class="values">
+        <h4 class="values-t">Nossos Valores</h4>
+        <div class="values-row">
+          <span class="vb">→ Pessoas acima de tudo</span>
+          <span class="vb">→ Assertividade na seleção</span>
+          <span class="vb">→ Transparência radical</span>
+          <span class="vb">→ Agilidade com qualidade</span>
+          <span class="vb">→ Foco em resultados</span>
+          <span class="vb">→ Parceria de longo prazo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 05 / 15 — O PROBLEMA
+       ========================================== -->
+  <div class="slide" data-slide="5">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">05 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>O PROBLEMA</span>
+      </div>
+
+      <h1>8 em cada 10 empresas têm dificuldade para contratar <em>as pessoas certas.</em></h1>
+
+      <p class="sub">O problema não é a falta de candidatos. É encontrar profissionais qualificados, alinhados à cultura da empresa e preparados para gerar resultados.</p>
+
+      <div class="cards-3">
+        <div class="card-prob">
+          <div class="card-ico">📋</div>
+          <h3 class="card-t">Contratações erradas</h3>
+          <p class="card-p">Escolhas inadequadas aumentam custos, afetam equipes e reduzem resultados.</p>
+        </div>
+        <div class="card-prob">
+          <div class="card-ico">🔄</div>
+          <h3 class="card-t">Alta rotatividade</h3>
+          <p class="card-p">A troca constante de profissionais gera instabilidade e perda de produtividade.</p>
+        </div>
+        <div class="card-prob">
+          <div class="card-ico">⏱️</div>
+          <h3 class="card-t">Processos lentos</h3>
+          <p class="card-p">Vagas abertas por muito tempo impactam a operação e limitam o crescimento.</p>
+        </div>
+      </div>
+
+      <div class="alert-bar">
+        <span class="alert-ico">⚠️</span>
+        <p class="alert-txt"><strong>Dado alarmante:</strong> uma contratação errada pode custar meses de produtividade. <strong class="wht">Quanto isso custa para sua empresa?</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 06 / 15 — O CUSTO DE NÃO AGIR
+       ========================================== -->
+  <div class="slide" data-slide="6">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">06 / 15</div>
+    </div>
+
+    <div class="content center">
+      <div class="tag c">
+        <span>O CUSTO DE NÃO AGIR</span>
+      </div>
+
+      <h1 style="text-align:center;">
+        Contratar errado custa mais do que <em>você imagina.</em>
+      </h1>
+
+      <p class="sub c">O problema não está na contratação. Está no prejuízo que uma contratação errada gera para sua empresa.</p>
+
+      <div class="sim-box">
+        <p class="sim-intro">Se sua empresa fizer apenas <strong>2 contratações erradas por mês:</strong></p>
+
+        <div class="sim-nums">
+          <div class="sim-item">
+            <div class="sim-label">CUSTO POR CONTRATAÇÃO</div>
+            <div class="sim-val">-R$5.000</div>
+          </div>
+          <div class="sim-arrow">→</div>
+          <div class="sim-item">
+            <div class="sim-label">PERDA MENSAL</div>
+            <div class="sim-val">-R$10.000</div>
+          </div>
+          <div class="sim-arrow">→</div>
+          <div class="sim-item">
+            <div class="sim-label">PERDA EM 12 MESES</div>
+            <div class="sim-val big">-R$120.000</div>
+          </div>
+        </div>
+
+        <div class="sim-line"></div>
+        <p class="sim-footer">Esse dinheiro poderia estar no seu caixa. <span class="o">Hoje.</span></p>
+      </div>
+    </div>
+  </div>
+
+<!-- ============================================
+     CSS — SLIDES 04, 05, 06
+     ============================================ -->
+<style>
+  /* CARDS 3 COLUNAS */
+  .cards-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  /* CARD MVP (SLIDE 04) */
+  .card-mvp {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--orange);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-ico {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,107,0,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-t {
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .card-p {
+    font-size: clamp(11px, 1vw, 13px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--gray-text);
+  }
+
+  /* VALORES (SLIDE 04) */
+  .values {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .values-t {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .values-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vb {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-text);
+  }
+
+  /* CARD PROBLEMA (SLIDE 05) */
+  .card-prob {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  /* BARRA DE ALERTA (SLIDE 05) */
+  .alert-bar {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(255,0,0,0.04);
+    border: 1px solid rgba(255,0,0,0.12);
+    border-left: 3px solid var(--red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .alert-ico {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .alert-txt {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--gray-text);
+  }
+
+  .alert-txt strong {
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  .wht {
+    color: var(--white) !important;
+    text-decoration: underline;
+  }
+
+  /* SIMULAÇÃO (SLIDE 06) */
+  .sim-box {
+    width: 100%;
+    max-width: 780px;
+    padding: 32px 40px;
+    border: 2px solid var(--orange);
+    border-radius: 10px;
+    background: rgba(255,107,0,0.03);
+    margin-top: 8px;
+  }
+
+  .sim-intro {
+    font-size: 14px;
+    color: var(--gray-text);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .sim-intro strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .sim-nums {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .sim-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sim-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .sim-val {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .sim-val.big {
+    font-size: clamp(32px, 4vw, 52px);
+  }
+
+  .sim-arrow {
+    font-size: 24px;
+    color: var(--gray-dark);
+    margin-top: 14px;
+  }
+
+  .sim-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 20px 0;
+  }
+
+  .sim-footer {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .o {
+    color: var(--orange);
+  }
+</style>
+  <!-- ==========================================
+       SLIDE 07 / 15 — POR QUE SOMOS DIFERENTES
+       ========================================== -->
+  <div class="slide" data-slide="7">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">07 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>POR QUE SOMOS DIFERENTES</span>
+      </div>
+
+      <h1>Muitos entregam currículos. <span class="hl">Nós entregamos as pessoas certas.</span></h1>
+
+      <p class="sub">A maioria dos processos seletivos se preocupa em preencher vagas. Nós buscamos pessoas alinhadas à cultura e aos valores da sua empresa. Processos e funções podem ser ensinados. <strong>Caráter, atitude e valores não.</strong></p>
+
+      <div class="tbl">
+        <div class="tbl-head">
+          <div class="tbl-col tbl-crit">Critério</div>
+          <div class="tbl-col tbl-trad">Mercado tradicional</div>
+          <div class="tbl-col tbl-ez">Economiza 360 RH</div>
+        </div>
+        <div class="tbl-row">
+          <div class="tbl-col tbl-crit">Tempo para contratar</div>
+          <div class="tbl-col tbl-trad">30 a 40 dias</div>
+          <div class="tbl-col tbl-ez"><strong>Até 14 dias</strong></div>
+        </div>
+        <div class="tbl-row">
+          <div class="tbl-col tbl-crit">Custo do processo</div>
+          <div class="tbl-col tbl-trad">Preço cheio</div>
+          <div class="tbl-col tbl-ez"><strong>Eficiência no resultado</strong></div>
+        </div>
+        <div class="tbl-row">
+          <div class="tbl-col tbl-crit">Entrega</div>
+          <div class="tbl-col tbl-trad">Currículos</div>
+          <div class="tbl-col tbl-ez"><strong>Pessoas certas</strong></div>
+        </div>
+        <div class="tbl-row">
+          <div class="tbl-col tbl-crit">Análise</div>
+          <div class="tbl-col tbl-trad">Técnica</div>
+          <div class="tbl-col tbl-ez"><strong>Técnica + comportamental + cultural</strong></div>
+        </div>
+        <div class="tbl-row">
+          <div class="tbl-col tbl-crit">Objetivo</div>
+          <div class="tbl-col tbl-trad">Fechar vagas</div>
+          <div class="tbl-col tbl-ez"><strong>Gerar resultado</strong></div>
+        </div>
+        <div class="tbl-row">
+          <div class="tbl-col tbl-crit">Relacionamento</div>
+          <div class="tbl-col tbl-trad">Fornecedor</div>
+          <div class="tbl-col tbl-ez"><strong>Parceiro estratégico</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 08 / 15 — METODOLOGIA PROPRIETÁRIA
+       ========================================== -->
+  <div class="slide" data-slide="8">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">08 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>METODOLOGIA PROPRIETÁRIA</span>
+      </div>
+
+      <h1>PCE® — <span class="hl">Pessoas, Cultura e Eficiência</span></h1>
+
+      <p class="sub">Uma metodologia criada para encontrar profissionais alinhados à função, à cultura e aos objetivos da empresa.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">01</div>
+          <h3 class="step-t">DIAGNÓSTICO DA VAGA</h3>
+          <p class="step-p">Entendemos a função, o perfil e os objetivos da contratação.</p>
+        </div>
+        <div class="step-arr">→</div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <h3 class="step-t">ATRAÇÃO DE TALENTOS</h3>
+          <p class="step-p">Buscamos candidatos qualificados em nossa base e nos principais canais.</p>
+        </div>
+        <div class="step-arr">→</div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <h3 class="step-t">SELEÇÃO ASSERTIVA</h3>
+          <p class="step-p">Avaliamos competências técnicas, perfil comportamental e aderência cultural.</p>
+        </div>
+        <div class="step-arr">→</div>
+        <div class="step step-hl">
+          <div class="step-n">04</div>
+          <h3 class="step-t">CONTRATAÇÃO DE ALTA PERFORMANCE</h3>
+          <p class="step-p">Apresentamos os profissionais mais aderentes para uma decisão segura.</p>
+        </div>
+      </div>
+
+      <div class="bar" style="justify-content:center;text-align:center;border-color:var(--border);background:rgba(255,255,255,0.02);">
+        <div class="bar-text"><strong>É na etapa 3 que está nosso diferencial.</strong> <span class="o">Enquanto outros analisam currículos, nós analisamos pessoas.</span></div>
+      </div>
+
+      <div class="met-row">
+        <div class="met-card">
+          <div class="met-n">14 dias</div>
+          <div class="met-l">Para apresentação dos candidatos</div>
+        </div>
+        <div class="met-card">
+          <div class="met-n">Até 20%</div>
+          <div class="met-l">Mais econômico que o mercado</div>
+        </div>
+        <div class="met-card">
+          <div class="met-n">+92%</div>
+          <div class="met-l">De aderência às vagas</div>
+        </div>
+        <div class="met-card met-card-hl">
+          <div class="met-n">Especialistas</div>
+          <div class="met-l">Dedicados por segmento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 09 / 15 — NOSSAS SOLUÇÕES
+       ========================================== -->
+  <div class="slide" data-slide="9">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">09 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>NOSSAS SOLUÇÕES</span>
+      </div>
+
+      <h1>Soluções completas para atrair, selecionar e contratar <em>as pessoas certas.</em></h1>
+
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-label">PRODUTO 01</div>
+          <h3 class="prod-t">Atração e Seleção de Pessoas</h3>
+          <p class="prod-p">Encontramos profissionais qualificados para indústrias, logística, construção civil e setores estratégicos.</p>
+          <div class="prod-badges">
+            <span class="pb green">14 dias prazo</span>
+            <span class="pb green">92% aderência</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-label">PRODUTO 02</div>
+          <h3 class="prod-t">Avaliação Comportamental</h3>
+          <p class="prod-p">Analisamos perfil, competências e aderência cultural para aumentar a assertividade das contratações.</p>
+          <div class="prod-badges">
+            <span class="pb green">88% alinhamento cultural</span>
+            <span class="pb green">+assertividade</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-label">PRODUTO 03</div>
+          <h3 class="prod-t">Divulgação Estratégica de Vagas</h3>
+          <p class="prod-p">Sua vaga anunciada nos principais canais e para milhares de candidatos qualificados.</p>
+          <div class="prod-badges">
+            <span class="pb green">+1MI candidatos na base</span>
+            <span class="pb green">multicanal</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-label">PRODUTO 04</div>
+          <h3 class="prod-t">Seleção Assertiva</h3>
+          <p class="prod-p">Banco com mais de 1 milhão de candidatos e relatórios completos para apoiar a tomada de decisão.</p>
+          <div class="prod-badges">
+            <span class="pb green">relatórios completos</span>
+            <span class="pb green">34% ↓ turnover</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============================================
+     CSS — SLIDES 07, 08, 09
+     ============================================ -->
+<style>
+  /* TABELA COMPARATIVA (SLIDE 07) */
+  .tbl {
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .tbl-head {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tbl-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .tbl-row:last-child {
+    border-bottom: none;
+  }
+
+  .tbl-col {
+    padding: 12px 16px;
+    font-size: clamp(11px, 1vw, 13px);
+    display: flex;
+    align-items: center;
+  }
+
+  .tbl-crit {
+    font-weight: 500;
+    color: var(--gray);
+  }
+
+  .tbl-trad {
+    color: var(--gray-text);
+    border-left: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .tbl-ez {
+    color: var(--white);
+    font-weight: 600;
+    border-left: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .tbl-head .tbl-crit {
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .tbl-head .tbl-trad {
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .tbl-head .tbl-ez {
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .tbl-row .tbl-ez {
+    background: rgba(255,107,0,0.07);
+  }
+
+  /* ETAPAS METODOLOGIA (SLIDE 08) */
+  .steps {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .step {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .step-hl {
+    background: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .step-hl .step-n {
+    color: var(--white);
+    background: rgba(255,255,255,0.2);
+  }
+
+  .step-hl .step-t {
+    color: var(--white);
+  }
+
+  .step-hl .step-p {
+    color: rgba(255,255,255,0.9);
+  }
+
+  .step-n {
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,107,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-t {
+    font-size: clamp(10px, 0.85vw, 12px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .step-p {
+    font-size: clamp(10px, 0.8vw, 12px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--gray-text);
+    max-width: 200px;
+  }
+
+  .step-arr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--gray-dark);
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+
+  /* MÉTRICAS METODOLOGIA (SLIDE 08) */
+  .met-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+    width: 100%;
+  }
+
+  .met-card {
+    background: var(--bg-card);
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .met-card-hl {
+    background: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .met-card-hl .met-n {
+    color: var(--white);
+  }
+
+  .met-card-hl .met-l {
+    color: rgba(255,255,255,0.9);
+  }
+
+  .met-n {
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1.1;
+  }
+
+  .met-l {
+    font-size: 11px;
+    color: var(--gray);
+    max-width: 160px;
+  }
+
+  /* GRID PRODUTOS (SLIDE 09) */
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .prod-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .prod-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .prod-t {
+    font-size: clamp(14px, 1.3vw, 18px);
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .prod-p {
+    font-size: clamp(11px, 1vw, 13px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--gray-text);
+  }
+
+  .prod-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .pb {
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .pb.green {
+    background: var(--green);
+    color: var(--white);
+  }
+</style>
+ <!-- ==========================================
+       SLIDE 10 / 15 — CASES POR SEGMENTO
+       ========================================== -->
+  <div class="slide" data-slide="10">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">10 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>CASES POR SEGMENTO</span>
+      </div>
+
+      <h1>Resultados que se repetem <em>em qualquer segmento.</em></h1>
+
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-badge">INDÚSTRIA</div>
+          <p class="case-desc">Recrutamento estratégico</p>
+          <div class="case-nums">
+            <div class="case-m">
+              <div class="case-n o">60%</div>
+              <div class="case-l">↑ Rapidez no preenchimento</div>
+            </div>
+            <div class="case-m">
+              <div class="case-n gl">92%</div>
+              <div class="case-l">Aderência ao perfil</div>
+            </div>
+            <div class="case-m">
+              <div class="case-n gl">34%</div>
+              <div class="case-l">↓ Turnover</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-badge">TRANSPORTE E LOGÍSTICA</div>
+          <p class="case-desc">Seleção de alta performance</p>
+          <div class="case-nums">
+            <div class="case-m">
+              <div class="case-n o">88%</div>
+              <div class="case-l">Alinhamento cultural</div>
+            </div>
+            <div class="case-m">
+              <div class="case-n gl">44%</div>
+              <div class="case-l">Permanecem +3 anos</div>
+            </div>
+            <div class="case-m">
+              <div class="case-n gl">92%</div>
+              <div class="case-l">Aderência às vagas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-badge">CONSTRUÇÃO CIVIL</div>
+          <p class="case-desc">Contratação acelerada</p>
+          <div class="case-nums">
+            <div class="case-m">
+              <div class="case-n o">60%</div>
+              <div class="case-l">↑ Rapidez nas contratações</div>
+            </div>
+            <div class="case-m">
+              <div class="case-n gl">34%</div>
+              <div class="case-l">↓ Rotatividade</div>
+            </div>
+            <div class="case-m">
+              <div class="case-n gl">88%</div>
+              <div class="case-l">Alinhamento cultural</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 11 / 15 — EMPRESAS QUE CONFIAM
+       ========================================== -->
+  <div class="slide" data-slide="11">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">11 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>EMPRESAS QUE CONFIAM</span>
+      </div>
+
+      <h1>Empresas que confiam em nossa <em>metodologia.</em></h1>
+
+      <div class="cli-section">
+        <div class="cli-cat">
+          <h3 class="cli-cat-t">INDÚSTRIA</h3>
+          <div class="cli-badges">
+            <div class="cli-b">Sangati Berga</div>
+            <div class="cli-b">Jangadeiro Têxtil</div>
+          </div>
+        </div>
+
+        <div class="cli-cat">
+          <h3 class="cli-cat-t">CONSTRUÇÃO CIVIL</h3>
+          <div class="cli-badges">
+            <div class="cli-b">Pague Menos Construções</div>
+            <div class="cli-b">Construtora Porto Freire</div>
+            <div class="cli-b">Fast Sistemas Construtivos</div>
+            <div class="cli-b">ConstruConnect</div>
+          </div>
+        </div>
+
+        <div class="cli-cat">
+          <h3 class="cli-cat-t">LOGÍSTICA & TRANSPORTE</h3>
+          <div class="cli-badges">
+            <div class="cli-b">Transnordestina Logística</div>
+            <div class="cli-b">Postal Company</div>
+            <div class="cli-b">Mail Boxes Etc. (MBE)</div>
+          </div>
+        </div>
+
+        <div class="cli-cat">
+          <h3 class="cli-cat-t">SERVIÇOS & VAREJO</h3>
+          <div class="cli-badges">
+            <div class="cli-b">Acquazero</div>
+            <div class="cli-b">Encontre Sua Peça</div>
+            <div class="cli-b">TotalClean</div>
+            <div class="cli-b">Brasil Nutri Shop</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 12 / 15 — COMO FUNCIONA
+       ========================================== -->
+  <div class="slide" data-slide="12">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">12 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>COMO FUNCIONA</span>
+      </div>
+
+      <h1>Da abertura da vaga à contratação <em>em 4 etapas simples.</em></h1>
+
+      <p class="sub">Você não precisa parar sua operação. Assumimos toda a responsabilidade do processo.</p>
+
+      <div class="jrn">
+        <div class="jrn-card">
+          <div class="jrn-num">1</div>
+          <div class="jrn-time">Dia 1</div>
+          <h3 class="jrn-t">Alinhamento da Vaga</h3>
+          <p class="jrn-p">Entendemos a função, o perfil desejado, a cultura da empresa e os objetivos.</p>
+        </div>
+        <div class="jrn-arr">→</div>
+        <div class="jrn-card">
+          <div class="jrn-num">2</div>
+          <div class="jrn-time">Dias 2 a 5</div>
+          <h3 class="jrn-t">Atração de Talentos</h3>
+          <p class="jrn-p">Iniciamos a busca em nossa base e nos principais canais de recrutamento.</p>
+        </div>
+        <div class="jrn-arr">→</div>
+        <div class="jrn-card">
+          <div class="jrn-num">3</div>
+          <div class="jrn-time">Dias 5 a 14</div>
+          <h3 class="jrn-t">Seleção e Avaliação</h3>
+          <p class="jrn-p">Triagens, entrevistas e avaliações comportamentais para identificar os mais aderentes.</p>
+        </div>
+        <div class="jrn-arr">→</div>
+        <div class="jrn-card jrn-hl">
+          <div class="jrn-num">4</div>
+          <div class="jrn-time jrn-time-hl">Até 14 dias*</div>
+          <h3 class="jrn-t">Apresentação dos Finalistas</h3>
+          <p class="jrn-p">Entregamos os candidatos recomendados para entrevista e contratação.</p>
+        </div>
+      </div>
+
+      <div class="bar" style="justify-content:center;text-align:center;border-color:var(--border);background:rgba(255,255,255,0.02);">
+        <div class="bar-text"><strong>Você continua focado no seu negócio.</strong> <span class="o">A gente encontra as pessoas certas para sua empresa.</span></div>
+      </div>
+
+      <p class="note">*Prazo sujeito à complexidade da vaga, nível hierárquico e volume de posições.</p>
+    </div>
+  </div>
+
+<!-- ============================================
+     CSS — SLIDES 10, 11, 12
+     ============================================ -->
+<style>
+  /* CASES (SLIDE 10) */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  .case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .case-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 5px 14px;
+    background: var(--orange);
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .case-desc {
+    font-size: 12px;
+    color: var(--gray-text);
+  }
+
+  .case-nums {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .case-m {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: center;
+  }
+
+  .case-n {
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .case-n.o {
+    color: var(--orange);
+  }
+
+  .case-n.gl {
+    color: var(--green-light);
+  }
+
+  .case-l {
+    font-size: 10px;
+    color: var(--gray);
+    line-height: 1.3;
+  }
+
+  /* CLIENTES (SLIDE 11) */
+  .cli-section {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cli-cat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cli-cat-t {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--orange);
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,107,0,0.15);
+  }
+
+  .cli-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cli-b {
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--bg-card);
+  }
+
+  /* JORNADA (SLIDE 12) */
+  .jrn {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .jrn-card {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .jrn-hl {
+    background: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .jrn-hl .jrn-num {
+    color: var(--white);
+    background: rgba(255,255,255,0.2);
+  }
+
+  .jrn-hl .jrn-t {
+    color: var(--white);
+  }
+
+  .jrn-hl .jrn-p {
+    color: rgba(255,255,255,0.9);
+  }
+
+  .jrn-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,107,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--orange);
+  }
+
+  .jrn-time {
+    display: inline-block;
+    padding: 3px 12px;
+    background: var(--orange);
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .jrn-time-hl {
+    background: rgba(255,255,255,0.2);
+  }
+
+  .jrn-t {
+    font-size: clamp(10px, 0.85vw, 12px);
+    font-weight: 800;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .jrn-p {
+    font-size: clamp(10px, 0.8vw, 11px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--gray-text);
+    max-width: 200px;
+  }
+
+  .jrn-arr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--gray-dark);
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+
+  .note {
+    font-size: 11px;
+    color: var(--gray-dark);
+    margin-top: 10px;
+    font-style: italic;
+  }
+</style>
+  <!-- ==========================================
+       SLIDE 13 / 15 — NOSSO COMPROMISSO
+       ========================================== -->
+  <div class="slide" data-slide="13">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">13 / 15</div>
+    </div>
+
+    <div class="content center">
+      <div class="tag c">
+        <span>NOSSO COMPROMISSO</span>
+      </div>
+
+      <h1 style="text-align:center;">Sem risco <em>para sua empresa.</em></h1>
+
+      <p class="sub c">Nosso compromisso é com o resultado. Se não entregar, você não paga.</p>
+
+      <div class="gar-grid">
+        <div class="gar-card">
+          <div class="gar-ico">🔄</div>
+          <h3 class="gar-t">Reposição gratuita</h3>
+          <p class="gar-p">Desligamento nos primeiros <strong>180 dias</strong>? Refazemos o processo sem custo adicional.</p>
+        </div>
+        <div class="gar-card">
+          <div class="gar-ico">💰</div>
+          <h3 class="gar-t">Pagamento justo</h3>
+          <p class="gar-p"><strong>50% no início</strong> do processo e <strong>50% na finalização.</strong> Sem surpresas.</p>
+        </div>
+        <div class="gar-card">
+          <div class="gar-ico">🚫</div>
+          <h3 class="gar-t">Sem taxa de adesão</h3>
+          <p class="gar-p">Nenhuma mensalidade ou custo oculto. Você paga pelo processo, não por burocracia.</p>
+        </div>
+        <div class="gar-card">
+          <div class="gar-ico">📊</div>
+          <h3 class="gar-t">Transparência total</h3>
+          <p class="gar-p">Relatórios em cada etapa do processo. Você acompanha tudo em tempo real.</p>
+        </div>
+      </div>
+
+      <div class="gar-bar">
+        <p class="gar-bar-text">Você só investe quando encontramos <span class="o">a pessoa certa.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 14 / 15 — OBJEÇÕES COMUNS
+       ========================================== -->
+  <div class="slide" data-slide="14">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">14 / 15</div>
+    </div>
+
+    <div class="content">
+      <div class="tag">
+        <span>OBJEÇÕES COMUNS</span>
+      </div>
+
+      <h1>Talvez você esteja pensando <em>uma dessas coisas.</em></h1>
+
+      <div class="obj-grid">
+        <div class="obj-card">
+          <div class="obj-head">
+            <span class="obj-x">✕</span>
+            <h3 class="obj-q">"Eu mesmo consigo contratar."</h3>
+          </div>
+          <p class="obj-a">Você pode encontrar currículos sozinho. O desafio é encontrar profissionais alinhados à função, à cultura e aos objetivos da empresa. <strong>É aí que está a diferença entre contratar e contratar certo.</strong></p>
+        </div>
+        <div class="obj-card">
+          <div class="obj-head">
+            <span class="obj-x">✕</span>
+            <h3 class="obj-q">"Já tentei e não funcionou."</h3>
+          </div>
+          <p class="obj-a">Nem todos os processos são iguais. Nossa metodologia avalia competências técnicas, perfil comportamental e aderência cultural para <strong>reduzir erros e aumentar a assertividade.</strong></p>
+        </div>
+        <div class="obj-card">
+          <div class="obj-head">
+            <span class="obj-x">✕</span>
+            <h3 class="obj-q">"Está caro para contratar agora."</h3>
+          </div>
+          <p class="obj-a">Uma contratação errada costuma custar muito mais do que um processo seletivo bem executado. <strong>O verdadeiro custo está no retrabalho, na perda de produtividade e na rotatividade.</strong></p>
+        </div>
+        <div class="obj-card">
+          <div class="obj-head">
+            <span class="obj-x">✕</span>
+            <h3 class="obj-q">"Agora não é o momento."</h3>
+          </div>
+          <p class="obj-a">Toda vaga aberta gera impacto na operação. <strong>Quanto mais tempo a posição fica sem a pessoa certa, maior o custo para a empresa.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 15 / 15 — CTA / FECHAMENTO
+       ========================================== -->
+  <div class="slide" data-slide="15">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">EZ</div>
+        <div class="logo-text">Economiza<span>360</span></div>
+      </div>
+      <div class="header-center">APRESENTAÇÃO EXECUTIVA</div>
+      <div class="header-num">15 / 15</div>
+    </div>
+
+    <div class="content center">
+      <div class="tag c">
+        <span>PRÓXIMO PASSO</span>
+      </div>
+
+      <h1 style="text-align:center;">Pronto para encontrar <em>as pessoas certas para sua empresa?</em></h1>
+
+      <div class="cta-metrics">
+        <div class="m">
+          <div class="m-n">+10 anos</div>
+          <div class="m-l c">De experiência</div>
+        </div>
+        <div class="m-div"></div>
+        <div class="m">
+          <div class="m-n">+7 mil</div>
+          <div class="m-l c">Processos realizados</div>
+        </div>
+        <div class="m-div"></div>
+        <div class="m">
+          <div class="m-n">+1 milhão</div>
+          <div class="m-l c">Candidatos avaliados</div>
+        </div>
+      </div>
+
+      <div class="loc-grid">
+        <div class="loc-card">
+          <div class="loc-pin">📍</div>
+          <h3 class="loc-city">Fortaleza — CE</h3>
+          <p class="loc-addr">R. Monsenhor Bruno, 1153</p>
+          <p class="loc-det">Aldeota — CEP 60115-191</p>
+        </div>
+        <div class="loc-card">
+          <div class="loc-pin">📍</div>
+          <h3 class="loc-city">Recife — PE</h3>
+          <p class="loc-addr">R. Prof. Aloísio Pessoa de Araújo, 75</p>
+          <p class="loc-det">Boa Viagem — Recife - PE</p>
+        </div>
+        <div class="loc-card">
+          <div class="loc-pin">📍</div>
+          <h3 class="loc-city">São Paulo — SP</h3>
+          <p class="loc-addr">Av. Paulista, 1106, Sala 01</p>
+          <p class="loc-det">Bela Vista — CEP 01310-914</p>
+        </div>
+      </div>
+
+      <div class="copy">© 2026 Economiza 360 RH — Todos os direitos reservados.</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       NAVEGAÇÃO GLOBAL (SETAS)
+       ========================================== -->
+  <div class="nav">
+    <button id="btn-prev">←</button>
+    <button id="btn-next">→</button>
+  </div>
+
+</div><!-- /presentation -->
+
+<!-- ============================================
+     CSS — SLIDES 13, 14, 15
+     ============================================ -->
+<style>
+  /* GARANTIA (SLIDE 13) */
+  .gar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .gar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--orange);
+    border-radius: 8px;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .gar-ico {
+    font-size: 30px;
+    width: 56px;
+    height: 56px;
+    background: rgba(255,107,0,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gar-t {
+    font-size: clamp(13px, 1.1vw, 16px);
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .gar-p {
+    font-size: clamp(11px, 0.9vw, 13px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--gray-text);
+  }
+
+  .gar-p strong {
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  .gar-bar {
+    width: 100%;
+    max-width: 1000px;
+    padding: 16px 28px;
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    background: rgba(255,107,0,0.04);
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .gar-bar-text {
+    font-size: clamp(14px, 1.2vw, 17px);
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  /* OBJEÇÕES (SLIDE 14) */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .obj-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .obj-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .obj-x {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: rgba(255,0,0,0.1);
+    border-radius: 50%;
+    color: var(--red);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .obj-q {
+    font-size: clamp(13px, 1.1vw, 16px);
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1.3;
+  }
+
+  .obj-a {
+    font-size: clamp(11px, 0.9vw, 13px);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--gray-text);
+    padding-left: 38px;
+  }
+
+  .obj-a strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* CTA (SLIDE 15) */
+  .cta-metrics {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 8px 0 32px 0;
+  }
+
+  .loc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 860px;
+  }
+
+  .loc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .loc-pin {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+
+  .loc-city {
+    font-size: clamp(13px, 1.1vw, 15px);
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .loc-addr {
+    font-size: 12px;
+    color: var(--gray-text);
+    line-height: 1.4;
+  }
+
+  .loc-det {
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  .copy {
+    margin-top: 32px;
+    font-size: 12px;
+    color: var(--gray-dark);
+  }
+</style>
+
+<!-- ============================================
+     JAVASCRIPT — NAVEGAÇÃO ENTRE SLIDES
+     ============================================ -->
+<script>
+(function () {
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length;
+  var current = 0;
+
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  function showSlide(index) {
+    if (index < 0) index = 0;
+    if (index >= total) index = total - 1;
+    for (var i = 0; i < total; i++) {
+      slides[i].classList.remove('active');
+    }
+    slides[index].classList.add('active');
+    current = index;
+  }
+
+  btnPrev.addEventListener('click', function () {
+    showSlide(current - 1);
+  });
+
+  btnNext.addEventListener('click', function () {
+    showSlide(current + 1);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      showSlide(current + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      showSlide(current - 1);
+    }
+  });
+
+  showSlide(0);
+})();
+</script>
+
+</body>
+</html>
